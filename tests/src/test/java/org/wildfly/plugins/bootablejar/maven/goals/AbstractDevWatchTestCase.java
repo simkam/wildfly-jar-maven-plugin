@@ -99,8 +99,8 @@ public abstract class AbstractDevWatchTestCase extends AbstractBootableJarMojoTe
                     String localRepository = System.getProperty("maven.repo.local");
                     // need to use the same repository as it is used for build
                     if(localRepository != null && !localRepository.isEmpty()) {
-                        String localRepositoryProperty = "-Dmaven.repo.local=" + localRepository;
-                        cmd.add(isWindows() ? "'" + localRepositoryProperty + "'" : localRepositoryProperty);
+                        String localRepositoryProperty = "-Dmaven.repo.local=\"" + localRepository + "\"";
+                        cmd.add(localRepositoryProperty);
                     }
                     logFile = getTestDir().resolve("target").resolve("dev-watch-test-output.txt");
                     if (Files.exists(logFile)) {
